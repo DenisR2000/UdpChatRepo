@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:UdpChat.Dictionaries">
+    <SolidColorBrush x:Key="background" Color="#914d47"></SolidColorBrush>
+    <SolidColorBrush x:Key="scb_common" Color="#476596"></SolidColorBrush>
+    <SolidColorBrush x:Key="scb_core" Color="#8a8a45"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="scb_background1" Color="#8c4978"/>
+    <SolidColorBrush x:Key="scb_background2" Color="#4b9691"/>
+    <SolidColorBrush x:Key="scb_highlight" Color="#4b9691"/>
+    <SolidColorBrush x:Key="button_hover" Color="#4b9691"/>
+
+    <SolidColorBrush x:Key="scb_header" Color="#4b9691"/>
+    <SolidColorBrush x:Key="scb_title" Color="#ffffff"/>
+    <SolidColorBrush x:Key="scb_subtitle" Color="#ffffff"/>
+    <SolidColorBrush x:Key="scb_content" Color="#ffffff"/>
+    <SolidColorBrush x:Key="scb_content_inactive" Color="RosyBrown"/>
+    <SolidColorBrush x:Key="scb_placeholder" Color="Gray"/>
+</ResourceDictionary>

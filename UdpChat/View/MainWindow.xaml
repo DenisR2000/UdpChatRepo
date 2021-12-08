@@ -1,0 +1,100 @@
+﻿<Window x:Class="UdpChat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UdpChat"
+        mc:Ignorable="d"
+        
+        xmlns:hly="http://schemas.hpod9.com/haley/mvvm"
+        xmlns:hlyWpf="http://schemas.hpod9.com/haley/wpf"
+        
+        Title="MainWindow" Height="400" Width="550">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Margin" Value="3"/>
+            <Setter  Property="TextAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Background" Value="{Binding ButtonColor}"/>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="3"/>
+            <Setter  Property="TextAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="{StaticResource scb_background2}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="250*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Height="80">
+            <Menu Height="30">
+                <MenuItem Header="View">
+                    <MenuItem Header="Light theam" Command="{Binding lightThemeCommand}"/>
+                    <MenuItem Header="Dark theam" Command="{Binding DarkThemeCommand}"/>
+                </MenuItem>
+                <MenuItem Header="Disconnect" Command="{Binding Disconnect}"></MenuItem>
+            </Menu>
+            
+            <UniformGrid Columns="5">
+                <TextBlock Margin="3" Text="IP"/>
+                <TextBlock Margin="3" Text="Local Port"/>
+                <TextBlock Margin="3" Text="Remo Port"/>
+                <TextBlock Margin="3" Text="Nick"/>
+            </UniformGrid>
+            <UniformGrid Columns="5">
+                <TextBox Text="{Binding IP}"/>
+                <TextBox Text="{Binding LocalPort}"/>
+                <TextBox Text="{Binding RemoPort}"/>
+                <TextBox Margin="3" TextAlignment="Center"  Text="{Binding Nick}"/>
+                <hlyWpf:PlainButton hlyWpf:Hover.Background="{DynamicResource scb_core}" hlyWpf:Shadow.Color="{DynamicResource scb_highlight}" hlyWpf:Shadow.OnlyOnMouseOver="False" hlyWpf:Shadow.IsEnabled="True" Content="Connect" CornerRadius="10" Command="{Binding ConnectProtocolUdpCommand}"/>
+            </UniformGrid>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+           
+            <TextBox
+                Grid.Row="1"
+                Text="{Binding Chat}"
+                TextAlignment="Left"
+                IsReadOnly="True"
+            />
+            <StackPanel Grid.Column="1">
+                <Button VerticalAlignment="Center" Background="Aqua" Command="{Binding ClearCommand}" Content="Clear" Height="30" ></Button>
+            </StackPanel>
+        </Grid>
+          
+      
+      
+        <Grid Height="30" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox
+                MaxLines="5"
+                Text="{Binding Message}"
+                TextAlignment="Left"
+                TextWrapping="Wrap"
+                />
+            <hlyWpf:PlainButton 
+                hlyWpf:Hover.Background="{DynamicResource scb_core}" 
+                hlyWpf:Shadow.Color="{DynamicResource scb_highlight}" 
+                hlyWpf:Shadow.OnlyOnMouseOver="True" 
+                hlyWpf:Shadow.IsEnabled="True"
+                CornerRadius="10"
+                Grid.Column="1"
+                Command="{Binding SendMessageUdpProtocolCommand}"
+                Content="Send"
+                />
+        </Grid>
+    </Grid>
+</Window>
